@@ -1,5 +1,5 @@
 <template>
-    <v-container> 홈페이지입니다</v-container>
+    <v-container> WELOCME TO THE VUE!</v-container>
 </template>
 
 <script>
