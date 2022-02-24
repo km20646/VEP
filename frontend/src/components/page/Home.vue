@@ -4,6 +4,7 @@
         <li v-for="movie in movies" :key="movie.userid" class="item">
             <h4>{{ movie.userid }}</h4>
             <span>{{ movie.age }}</span>
+            <span>입니다.</span>
         </li>
     </v-container>
 </template>
