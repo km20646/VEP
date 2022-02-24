@@ -1,9 +1,31 @@
 <template>
-    <v-container> WELOCME TO THE VUE! 안녕하세요</v-container>
+    <v-container>
+        <h1>영화</h1>
+        <li v-for="movie in movies" :key="movie.userid" class="item">
+            <h4>{{ movie.userid }}</h4>
+            <span>{{ movie.age }}</span>
+        </li>
+    </v-container>
 </template>
 
 <script>
-    export default {};
+    export default {
+        created() {
+            this.$axios
+                .get("/api/movies")
+                .then((res) => {
+                    this.movies = res.data;
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        },
+        data() {
+            return {
+                movies: [],
+            };
+        },
+    };
 </script>
 
 <style></style>

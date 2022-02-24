@@ -1,5 +1,5 @@
 <template>
-    <div>account</div>
+    <div>계정정보들</div>
 </template>
 
 <script>
