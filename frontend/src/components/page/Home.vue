@@ -1,5 +1,5 @@
 <template>
-    <v-container> WELOCME TO THE VUE!</v-container>
+    <v-container> WELOCME TO THE VUE! 안녕하세요</v-container>
 </template>
 
 <script>

@@ -1,12 +1,12 @@
 <template>
     <v-app id="app">
-        <v-app-bar app dense color="deep-purple" dark>
+        <v-app-bar app dense color="indigo accent-2" dark>
             <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
             <v-toolbar-title></v-toolbar-title>
         </v-app-bar>
         <v-navigation-drawer v-model="drawer" absolute temporary>
             <v-list nav dense>
-                <v-list-item-group v-model="selectedGroup" active-class="deep-purple--text text--accent-4">
+                <v-list-item-group v-model="selectedGroup" active-class="indigo accent-2--text text--accent-4">
                     <v-list-item v-for="(item, i) in group" :key="i" :to="item.path">
                         <v-list-item-icon>
                             <v-icon v-text="item.icon">mdi-home</v-icon>
