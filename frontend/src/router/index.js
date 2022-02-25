@@ -2,11 +2,16 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "@/components/page/Home";
 import Account from "@/components/page/Account";
+import Login from "@/components/page/Login";
 Vue.use(Router);
 const routes = [{
-    path: "/",
+    path: "/home",
     name: "Home",
     component: Home
+}, {
+    path: "/",
+    name: "Login",
+    component: Login
 }, {
     path: "/account",
     name: "Account",

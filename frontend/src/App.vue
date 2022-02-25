@@ -32,11 +32,11 @@
                 group: [
                     {
                         icon: "mdi-home",
-                        text: "Home!",
+                        text: "Home",
                         title: "Finder",
                         path: "/",
                     },
-                    { icon: "mdi-account", text: "Account", path: "/account" },
+                    { icon: "mdi-login", text: "Login", path: "/login" },
                 ],
             };
         },
