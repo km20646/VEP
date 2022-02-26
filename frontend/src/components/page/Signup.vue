@@ -3,15 +3,15 @@
         <v-row justify="center">
             <v-col cols="12" align="center">
                 <v-card class="pa-4 rounded-lg" max-width="500" elevation="0" outlined>
-                    <v-card-title class="font-weight-bold">로그인</v-card-title>
+                    <v-card-title class="font-weight-bold">회원가입</v-card-title>
                     <v-card-text>
                         <v-text-field prepend-icon="mdi-account-outline" v-model="id" label="아이디" required></v-text-field>
                         <v-text-field prepend-icon="mdi-form-textbox-password" @click:append="show1 = !show1" :type="show1 ? 'text' : 'password'" counter :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'" v-model="pw" label="비밀번호" required hint="8자 이상 입력"></v-text-field>
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn depressed large color="indigo accent-2 white--text" @click="login" block rounded class="mx-auto font-weight-bold body-1"> 로그인 </v-btn>
+                        <v-btn depressed large color="teal lighten-2 white--text" block rounded class="mx-auto font-weight-bold body-1"> 가입하기 </v-btn>
                     </v-card-actions>
-                    <div class="grey--text accent-3 font-weight-bold mt-2 body-2">계정 없으면 <router-link to="/signup">회원가입</router-link>하기</div>
+                    <div class="grey--text accent-3 font-weight-bold mt-2 body-2">또는 <router-link to="/">로그인</router-link>으로 돌아가기</div>
                 </v-card>
             </v-col>
         </v-row>
@@ -31,11 +31,6 @@
                     emailMatch: () => `The email and password you entered don't match`,
                 },
             };
-        },
-        methods: {
-            login() {
-                this.$router.replace("home");
-            },
         },
     };
 </script>

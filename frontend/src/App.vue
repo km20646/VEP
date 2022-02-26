@@ -31,12 +31,12 @@
                 title: "",
                 group: [
                     {
-                        icon: "mdi-home",
-                        text: "Home",
+                        icon: "mdi-login",
+                        text: "Login",
                         title: "Finder",
                         path: "/",
                     },
-                    { icon: "mdi-login", text: "Login", path: "/login" },
+                    { icon: "mdi-home", text: "Home", path: "/home" },
                 ],
             };
         },
