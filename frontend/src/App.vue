@@ -57,27 +57,31 @@
                         console.log(err);
                     });
             },
+            checkLogin() {
+                const auth = getAuth();
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        // User is signed in, see docs for a list of available properties
+                        // https://firebase.google.com/docs/reference/js/firebase.User
+                        const uid = user.uid;
+                        console.log(uid);
+                        this.$store.state.logined = !this.$store.state.logined;
+                        this.$store.state.id = user.email;
+                        console.log(this.$store.state.logined);
+                        if (this.$route.path !== "/home") this.$router.push("/home");
+                        // ...
+                    } else {
+                        // User is signed out
+                        if (this.$route.path !== "/login") this.$router.push("/login");
+
+                        // ...
+                    }
+                });
+            },
         },
         created: function () {
             console.log(this.$store.state.logined);
-            const auth = getAuth();
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    // User is signed in, see docs for a list of available properties
-                    // https://firebase.google.com/docs/reference/js/firebase.User
-                    const uid = user.uid;
-                    console.log(uid);
-                    this.$store.state.logined = !this.$store.state.logined;
-                    console.log(this.$store.state.logined);
-                    this.$router.replace("home");
-                    // ...
-                } else {
-                    // User is signed out
-                    this.$router.replace("login");
-
-                    // ...
-                }
-            });
+            this.checkLogin();
         },
         data() {
             return {

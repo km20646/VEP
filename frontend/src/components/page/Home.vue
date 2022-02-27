@@ -1,15 +1,15 @@
 <template>
     <v-container>
-        <h1>welcome to the home</h1>
+        <h1>{{ this.email }}님 환영합니다</h1>
         <li v-for="movie in movies" :key="movie.userid" class="item">
             <h4>{{ movie.userid }}</h4>
             <span>{{ movie.age }}</span>
-            <span>입니다.</span>
         </li>
     </v-container>
 </template>
 
 <script>
+    import { getAuth, onAuthStateChanged } from "firebase/auth";
     export default {
         created() {
             this.$axios
@@ -20,10 +20,20 @@
                 .catch((err) => {
                     console.log(err);
                 });
+            const auth = getAuth();
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    console.log(user);
+                    this.email = user.email;
+                } else {
+                    this.$router.push("/login");
+                }
+            });
         },
         data() {
             return {
                 movies: [],
+                email: "",
             };
         },
     };

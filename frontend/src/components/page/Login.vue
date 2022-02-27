@@ -13,7 +13,7 @@
                     </v-card-actions>
                     <div class="grey--text accent-3 font-weight-bold mt-2 body-2">계정 없으면 <router-link to="/signup">회원가입</router-link>하기</div>
                     <v-card-actions class="mt-12">
-                        <v-btn depressed rounded large color="red accent-2 white--text" block class="mx-auto font-weight-bold body-1">
+                        <v-btn depressed rounded large @click="google" color="red accent-2 white--text" block class="mx-auto font-weight-bold body-1">
                             <v-icon class="mr-2">mdi-google</v-icon>
                             로그인
                         </v-btn>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-    import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+    import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
     export default {
         created: function () {},
         data() {
@@ -41,12 +41,32 @@
             };
         },
         methods: {
+            google() {
+                const provider = new GoogleAuthProvider();
+                const auth = getAuth();
+                auth.languageCode = "Korean";
+                signInWithPopup(auth, provider)
+                    .then((result) => {
+                        // This gives you a Google Access Token. You can use it to access the Google API.
+                        // const credential = GoogleAuthProvider.credentialFromResult(result);
+                        // const token = credential.accessToken;
+
+                        // The signed-in user info.
+                        const user = result.user;
+                        alert(user.displayName + "님 환영합니다~!");
+                        // ...
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        // ...
+                    });
+            },
             login() {
                 const auth = getAuth();
                 signInWithEmailAndPassword(auth, this.email, this.pw).then(
                     function () {
                         alert("로그인 완료!");
-                        this.$routes.replace("home");
+                        if (this.$route.path !== "/home") this.$routes.push("/home");
                     },
                     function (err) {
                         alert("에러 : " + err.message);

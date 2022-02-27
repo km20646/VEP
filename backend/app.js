@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+const history = require('connect-history-api-fallback');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
@@ -18,12 +19,13 @@ app.use(express.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
+// json return
+app.use('/api/movies', indexRouter);
+app.use(history());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-// json return
-
-app.use('/api/movies', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

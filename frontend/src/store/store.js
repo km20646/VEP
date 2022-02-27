@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
         message: 'Hello',
-        logined: false
+        logined: false,
+        id: ""
     },
     mutations: {
         changeMessage(state, newMsg) {
